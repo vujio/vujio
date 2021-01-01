@@ -48,7 +48,7 @@ _See [Rust Documentation: Unstable Features](https://doc.rust-lang.org/cargo/ref
 
 ## Entrypoints
 
-- Server: [src/server.rs](src/server.rs)  
+- Server: [src/main.rs](src/main.rs)  
 - Client: [src/main.ts](src/main.ts)
 
 ## Crates

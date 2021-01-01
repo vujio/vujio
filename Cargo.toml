@@ -1,10 +1,10 @@
 [package]
 name = "vujio_application"
-version = "0.1.2"
+version = "0.1.3"
 authors = ["Shawn <shawn@vuj.io>"]
 edition = "2018"
 license = "Apache-2.0/MIT"
-readme = "README.md"
+readme = "APPLICATION.md"
 repository = "https://github.com/vujio/vujio"
 description = "An _experimental_ fast and pertinent web platform for modern devices."
 
