@@ -1,0 +1,26 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "cargo watch -x run",
+      "type": "shell",
+      "command": "cargo watch -x run",
+      "problemMatcher": "$rustc-watch",
+      "isBackground": true,
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "cargo build",
+      "group": "build",
+      "type": "shell",
+      "command": "cargo build",
+      "problemMatcher": "$rustc-watch",
+      "isBackground": false
+    }
+  ]
+}
