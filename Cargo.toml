@@ -20,4 +20,4 @@ vujio_client = { version = "0.1.1", path = "vujio_client" }
 vujio_server = { version = "0.1.1", path = "vujio_server" }
 
 [profile.release]
-opt-level = 's'
+opt-level = 3
