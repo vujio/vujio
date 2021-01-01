@@ -35,7 +35,7 @@ _See [Rust Documentation: Unstable Features](https://doc.rust-lang.org/cargo/ref
 1. [Install VS Code](https://code.visualstudio.com/download)
 2. Open `vujio.code-workspace`
 3. Install recommended extensions: (VS Code will prompt)  
-   [.vscode/exensions.json](.vscode/exensions.json)
+   [./.vscode/extensions.json](./.vscode/extensions.json)
 4. [Install Rust](https://www.rust-lang.org/tools/install)
 5. Set to Rust Nightly, run:  
 ```rustup default nightly && rustup update```
