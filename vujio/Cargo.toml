@@ -1,11 +1,13 @@
 [package]
 name = "vujio"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Shawn <shawn@vuj.io>"]
 edition = "2018"
 license = "Apache-2.0/MIT"
 repository = "https://github.com/vujio/vujio"
 description = "An _experimental_ fast and pertinent web platform for modern devices."
+keywords = ["web", "http", "client", "server", "html"]
+categories = ["api-bindings", "development-tools", "web-programming"]
 
 [dependencies]
 quote = "1.0.8"

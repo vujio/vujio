@@ -1,9 +1,10 @@
 [package]
 name = "vujio_application"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Shawn <shawn@vuj.io>"]
 edition = "2018"
 license = "Apache-2.0/MIT"
+readme = "README.md"
 repository = "https://github.com/vujio/vujio"
 description = "An _experimental_ fast and pertinent web platform for modern devices."
 
@@ -14,7 +15,7 @@ async-std = { version = "1.7.0", features = ["attributes"] }
 cargo-watch = "7.5.0"
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0.61"
-vujio = { version = "0.1.1", path = "./vujio" }
+vujio = { version = "0.1.2", path = "./vujio" }
 vujio_client = { version = "0.1.1", path = "vujio_client" }
 vujio_server = { version = "0.1.1", path = "vujio_server" }
 
