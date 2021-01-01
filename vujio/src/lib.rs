@@ -58,7 +58,7 @@ pub fn server(args: TokenStream, input: TokenStream) -> TokenStream {
         use vujio_server::*;
 
         #(#attrs)*
-        #vis #sig -> tide::Result<()> {
+        #vis #sig -> vujio_server::Result<()> {
             let client_bundle = client::bundle(
                 "src/main.ts",
                 &client::BundlerConfig {
@@ -69,16 +69,16 @@ pub fn server(args: TokenStream, input: TokenStream) -> TokenStream {
             );
 
             let state = AppState { client_bundle };
-            let mut app = tide::with_state(state);
+            let mut app = vujio_server::with_state(state);
 
-            app.at("/").get(async move |_req: Request<AppState>| -> tide::Result {
-                Ok(Response::builder(200)
+            app.at("/").get(async move |_req: vujio_server::Request<AppState>| -> vujio_server::Result {
+                Ok(vujio_server::Response::builder(200)
                     .body("<!DOCTYPE html><html><head><title></title><script src=\"bundle\"></script></head><body></body></html>")
                     .content_type(mime::HTML)
                     .build())
             });
 
-            app.at("/bundle").get(async move |req: tide::Request<AppState>| -> tide::Result<String> {
+            app.at("/bundle").get(async move |req: vujio_server::Request<AppState>| -> vujio_server::Result<String> {
                 Ok(req.state().client_bundle.clone())
             });
 
@@ -93,8 +93,8 @@ pub fn server(args: TokenStream, input: TokenStream) -> TokenStream {
 
             #body;
 
-            app.at("/favicon.ico").get(async move |_req: Request<AppState>| -> tide::Result {
-                Ok(Response::builder(404).content_type(mime::ICO).build())
+            app.at("/favicon.ico").get(async move |_req: vujio_server::Request<AppState>| -> vujio_server::Result {
+                Ok(vujio_server::Response::builder(404).content_type(mime::ICO).build())
             });
 
             println!("Listen {}", #listen);
@@ -131,12 +131,12 @@ pub fn get_html(args: TokenStream, input: TokenStream) -> TokenStream {
         app.at(#app_path).get(#function_ident);
 
         #(#attrs)*
-        #vis #sig -> tide::Result {
+        #vis #sig -> vujio_server::Result {
             let result: String = (async move || {
                 #body
             })().await;
 
-            Ok(Response::builder(200)
+            Ok(vujio_server::Response::builder(200)
                 .body(result)
                 .content_type(mime::HTML)
                 .build())
