@@ -9,7 +9,7 @@
       "type": "cppvsdbg",
       "request": "launch",
       "preLaunchTask": "cargo build",
-      "program": "${workspaceRoot}/target/debug/vujio-server",
+      "program": "${workspaceRoot}/target/debug/vujio_application",
       "stopAtEntry": false,
       "cwd": "${workspaceRoot}",
       "environment": [{ "name": "RUST_BACKTRACE", "value": "full" }],
