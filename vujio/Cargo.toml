@@ -12,8 +12,8 @@ categories = ["api-bindings", "development-tools", "web-programming"]
 [dependencies]
 quote = "1.0.8"
 syn = "1.0.56"
-vujio_client = { version = "0.1.0", path = "../vujio_client" }
-vujio_server = { version = "0.1.0", path = "../vujio_server" }
+vujio_client = { version = "0.1.2", path = "../vujio_client" }
+vujio_server = { version = "0.1.2", path = "../vujio_server" }
 
 [lib]
 proc-macro = true
