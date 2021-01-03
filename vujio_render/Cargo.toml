@@ -1,0 +1,43 @@
+[package]
+name = "vujio_render"
+version = "0.1.0"
+authors = ["Shawn <shawn@vuj.io>"]
+edition = "2018"
+license = "Apache-2.0/MIT"
+repository = "https://github.com/vujio/vujio/vujio_render"
+description = "vuj.io render utilities"
+
+[features]
+default = [
+    #"bevy/bevy_audio",
+    "bevy/bevy_gltf",
+    "bevy/bevy_winit",
+    "bevy/bevy_wgpu",
+    "bevy/render",
+    #"bevy/dynamic_plugins",
+    "bevy/png",
+    "bevy/hdr",
+    #"bevy/mp3",
+    #"bevy/x11",
+]
+
+# cargo build --target wasm32-unknown-unknown --no-default-features --features web
+# wasm-bindgen --out-dir target --out-name wasm --target web --no-typescript target/wasm32-unknown-unknown/debug/vujio_render.wasm
+web = [
+    "bevy_webgl2",
+    #"bevy/bevy_audio",
+    "bevy/bevy_gltf",
+    "bevy/bevy_winit",
+    "bevy/render",
+    #"bevy/dynamic_plugins",
+    "bevy/png",
+    "bevy/hdr",
+    #"bevy/mp3",
+    #"bevy/x11",
+]
+
+[dependencies]
+async-std = { version = "1.7.0", features = ["attributes"] }
+bevy = { version = "0.4.0", default-features = false }
+bevy_webgl2 = { version = "0.4.0", optional = true }
+wasm-bindgen-cli = "0.2.69"

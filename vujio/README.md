@@ -33,5 +33,16 @@ async fn main() {
     async fn test_path(_req: Request<AppState>) -> String {
         "Page: /test_path".into()
     }
+
+    #[message("/websocket")]
+    async fn message(stream: &WebSocketConnection, input: String) {
+        println!("Client says: {:?}", input);
+        stream.send_string("server response".into()).await;
+    }
+
+    #[binary_stream("/ws")]
+    async fn my_stream(stream: &WebSocketConnection, input: Vec<u8>) {
+        stream.send_bytes(input).await;
+    }
 }
 ```

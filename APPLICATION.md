@@ -1,6 +1,6 @@
 # vujio_application
 
-[![github.com vujio](https://img.shields.io/badge/github-vujio-informational?style=flat-square&logo=github)](https://crates.io/crates/vujio)
+[![github.com vujio](https://img.shields.io/badge/github-vujio-informational?style=flat-square&logo=github)](https://github.com/vujio/vujio)
 [![crates.io vujio](https://img.shields.io/crates/v/vujio.svg?style=flat-square&logo=rust)](https://crates.io/crates/vujio)
 
 _/vu-hē-oʊ/_

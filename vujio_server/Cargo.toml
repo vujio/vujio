@@ -1,6 +1,6 @@
 [package]
 name = "vujio_server"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Shawn <shawn@vuj.io>"]
 edition = "2018"
 license = "Apache-2.0/MIT"
@@ -10,6 +10,7 @@ description = "vuj.io server utilities"
 [dependencies]
 async-std = { version = "1.7.0", features = ["attributes"] }
 http-types = "2.9.0"
+matroska = "0.5.5"
 serde = { version = "1.0", features = ["derive"] }
 tide = "0.15.0"
 tide-websockets = "0.1.0"

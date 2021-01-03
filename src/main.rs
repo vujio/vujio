@@ -20,7 +20,6 @@ struct ClientState {
 #[server("127.0.0.1:8080", AppState, ClientState)]
 #[async_std::main]
 async fn main() {
-
     #[get_html("/")]
     async fn homepage(_req: Request<AppState>) -> String {
         let body = "<script src=\"bundle\"></script>Hello World!".to_string();
@@ -39,5 +38,15 @@ async fn main() {
     async fn test_path(_req: Request<AppState>) -> String {
         "Hello World! - /test_path<br><a href=\"https://github.com/vujio/vujio\">Fork vuj.io on GitHub!</a>".into()
     }
-    
+
+    #[message("/websocket")]
+    async fn message(stream: &WebSocketConnection, input: String) {
+        println!("Client says: {:?}", input);
+        stream.send_string("server response".into()).await;
+    }
+
+    #[binary_stream("/ws")]
+    async fn my_stream(stream: &WebSocketConnection, input: Vec<u8>) {
+        stream.send_bytes(input).await;
+    }
 }

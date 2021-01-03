@@ -67,7 +67,16 @@ impl<'a> Fold for MangleIdentCollector<'a> {
             };
         }
 
-        let new_name = format!("_{}", self.used_names.len());
+        let new_name: String;
+        if match &*ident.sym {
+            "WebSocket" | "MediaRecorder" | "navigator" | "vujio" => true,
+            _ => false,
+        } {
+            new_name = ident.sym.clone().to_string();
+        } else {
+            new_name = format!("_{}", self.used_names.len());
+        }
+
         self.used_names.insert(ident.sym.clone(), new_name.clone());
 
         Ident {

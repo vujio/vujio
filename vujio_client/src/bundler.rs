@@ -1,8 +1,10 @@
 use anyhow::Error;
+use relative_path::RelativePathBuf;
 use std::collections::HashMap;
 use std::{
     fmt::{self, Display, Formatter},
     io::{self, Write},
+    path::Path,
     sync::{Arc, RwLock},
 };
 use swc::{
@@ -19,8 +21,8 @@ use swc_ecma_ast::KeyValueProp;
 use swc_ecma_codegen::{text_writer::JsWriter, Emitter};
 use swc_ecma_parser::{lexer::Lexer, JscTarget, Parser, StringInput, Syntax, TsConfig};
 
-#[path = "mangle.rs"]
-mod mangle;
+//#[path = "mangle.rs"]
+//mod mangle;
 
 pub struct BundlerConfig {
     pub minify: bool,
@@ -126,7 +128,7 @@ pub fn bundle(entry_path: &str, bundler_config: &BundlerConfig) -> String {
         ..Default::default()
     };
 
-    let mut program = c
+    let program = c
         .parse_js(
             fm.clone(),
             jsc_target,
@@ -140,7 +142,7 @@ pub fn bundle(entry_path: &str, bundler_config: &BundlerConfig) -> String {
         )
         .unwrap();
 
-    program = c.transform(program, true, &mut mangle::mangle());
+    //program = c.transform(program, true, &mut mangle::mangle());
 
     let output = c
         .process_js(program, &swc_options)
@@ -227,11 +229,17 @@ impl Resolve for PathResolver {
             _ => unreachable!(),
         };
 
-        let base_path = base.parent().unwrap();
+        let base_path = base
+            .parent()
+            .unwrap()
+            .join(format!("{}{}", module_specifier, ".ts"));
 
-        Ok(FileName::Real(
-            base_path.join(format!("{}{}", module_specifier, ".ts")),
-        ))
+        let base_path = RelativePathBuf::from_path(base_path)
+            .unwrap()
+            .normalize()
+            .to_path(Path::new("."));
+
+        Ok(FileName::Real(base_path))
     }
 }
 

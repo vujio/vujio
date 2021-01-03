@@ -8,9 +8,9 @@ mod tests {
 
     #[test]
     fn it_works() {
-        client::bundle(
+        bundler::bundle(
             "src/main.ts",
-            &client::BundlerConfig {
+            &bundler::BundlerConfig {
                 minify: true,
                 compat: true,
                 source_maps: true,
@@ -21,11 +21,11 @@ mod tests {
     #[bench]
     fn bench_compiler(b: &mut Bencher) {
         b.iter(|| {
-            client::bundle(
+            bundler::bundle(
                 "src/main.ts",
-                &client::BundlerConfig {
+                &bundler::BundlerConfig {
                     minify: true,
-                    compat: true,
+                    compat: false,
                     source_maps: true,
                 },
             )

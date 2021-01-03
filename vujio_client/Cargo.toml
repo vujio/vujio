@@ -1,6 +1,6 @@
 [package]
 name = "vujio_client"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Shawn <shawn@vuj.io>"]
 edition = "2018"
 license = "Apache-2.0/MIT"
@@ -10,6 +10,9 @@ description = "vuj.io client utilities"
 [dependencies]
 anyhow = "1.0.36"
 async-std = { version = "1.7.0", features = ["attributes"] }
+bevy = "0.4.0"
+bevy_webgl2 = { version = "0.4.1", optional = true }
+relative-path = "1.3.2"
 swc = { version = "0.0.0" }
 swc_atoms = { version = "0.2.5" }
 swc_bundler = { version = "0.18.2" }
@@ -18,3 +21,12 @@ swc_ecma_ast = { version = "0.36.2" }
 swc_ecma_codegen = { version = "0.42.2" }
 swc_ecma_parser = { version = "0.44.1" }
 swc_ecma_visit = { version = "0.22.0" }
+#wasm-bindgen = "0.2.69"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[features]
+default = ["bevy/bevy_gltf", "bevy/bevy_winit", "bevy/render", "bevy/png"]
+native = ["bevy/bevy_wgpu"]
+web = ["bevy_webgl2"]

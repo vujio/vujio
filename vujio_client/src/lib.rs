@@ -1,2 +1,2 @@
-pub mod client;
+pub mod bundler;
 pub mod mangle;
